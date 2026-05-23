@@ -1,0 +1,42 @@
+{
+  "name": "yyc3-api-proxy",
+  "version": "0.9.4",
+  "description": "YYC³ AI Family - Local API Proxy Server (Browser ↔ PostgreSQL 15)",
+  "private": true,
+  "scripts": {
+    "start": "tsx yyc3-api-proxy.ts",
+    "dev": "tsx watch yyc3-api-proxy.ts",
+    "start:node": "ts-node yyc3-api-proxy.ts",
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "db:create": "if [ -z \"$YYC3_PG_PASSWORD\" ]; then echo '❌ Error: YYC3_PG_PASSWORD env var is required. Set it first: export YYC3_PG_PASSWORD=your_password'; exit 1; fi && createdb -U postgres yyc3_family && psql -U postgres -d yyc3_family -c \"CREATE ROLE yyc3_admin WITH LOGIN PASSWORD '$YYC3_PG_PASSWORD';\" && psql -U postgres -d yyc3_family -c \"GRANT ALL PRIVILEGES ON DATABASE yyc3_family TO yyc3_admin;\"",
+    "db:init": "psql -U yyc3_admin -d yyc3_family -f ../docs/postgresql-15-schema.sql",
+    "db:init:super": "psql -U postgres -d yyc3_family -f ../docs/postgresql-15-schema.sql",
+    "db:reset": "psql -U postgres -c \"DROP DATABASE IF EXISTS yyc3_family;\" && npm run db:create && npm run db:init:super",
+    "db:verify": "psql -U yyc3_admin -d yyc3_family -c \"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name;\"",
+    "db:stats": "psql -U yyc3_admin -d yyc3_family -c \"SELECT schemaname, relname, n_live_tup FROM pg_stat_user_tables ORDER BY n_live_tup DESC;\"",
+    "health": "curl -s http://localhost:3721/api/v1/health | jq .",
+    "tables": "curl -s http://localhost:3721/api/v1/tables | jq .",
+    "e2e:test": "tsx e2e-test.ts",
+    "env:init": "cp -n env.example.txt .env || echo '.env already exists'",
+    "setup": "npm install && npm run env:init && echo '=== Setup complete. Next: npm run db:create && npm run db:init && npm run dev ==='"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "pg": "^8.13.0",
+    "dotenv": "^16.4.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/pg": "^8.11.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

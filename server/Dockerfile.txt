@@ -1,0 +1,31 @@
+# ════════════════════════════════════════════════════════════════════
+# YYC³ AI Family - API Proxy Server Dockerfile
+# 构建本地 API 代理容器 / Build local API proxy container
+# ════════════════════════════════════════════════════════════════════
+# 使用方式 / Usage:
+#   在本地使用时，将此文件重命名为 Dockerfile（无扩展名）
+#   When using locally, rename this file to Dockerfile (no extension)
+#   cp server/Dockerfile.txt server/Dockerfile
+# ════════════════════════════════════════════════════════════════════
+
+FROM node:20-alpine AS base
+WORKDIR /app
+
+# 安装依赖 / Install dependencies
+COPY package.json ./
+RUN npm install --production=false
+
+# 复制源码 / Copy source
+COPY tsconfig.json ./
+COPY types.ts ./
+COPY yyc3-api-proxy.ts ./
+
+# 暴露端口 / Expose port
+EXPOSE 3721
+
+# 健康检查 / Health check
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -qO- http://localhost:3721/api/v1/health || exit 1
+
+# 启动 / Start
+CMD ["npx", "tsx", "yyc3-api-proxy.ts"]

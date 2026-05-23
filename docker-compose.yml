@@ -1,0 +1,128 @@
+# ════════════════════════════════════════════════════════════════════
+# YYC³ AI Family - Docker Compose 一键编排
+# YYC³ AI Family - Docker Compose One-Click Orchestration
+# ════════════════════════════════════════════════════════════════════
+# Version: 0.9.4 [Personalize] [Security Hardened]
+# Architecture: PostgreSQL 15 + API Proxy + Frontend (3 containers)
+#
+# ⚠️ 安全警告 / Security Warning:
+#   - 此文件包含数据库密码配置，请勿提交到公开仓库！
+#   - This file contains database password config, DO NOT commit to public repos!
+#   - 必须先设置 YYC3_PG_PASSWORD 环境变量才能启动
+#   - Must set YYC3_PG_PASSWORD env var before starting
+#
+# 启动方式 / Startup:
+#   export $(cat server/.env | xargs) && docker compose up -d  # 推荐 (Recommended)
+#   YYC3_PG_PASSWORD=your_pass docker compose up -d             # 命令行传入 (CLI)
+#   docker compose --env-file server/.env up -d                 # 使用 env 文件
+#
+# 密码生成命令 / Password Generation:
+#   openssl rand -base64 32  # 生成 32 位强密码
+#
+# 详细安全配置请参考 / See detailed security guide:
+#   docs/0379-yyc3-ai-family-glm5-turbo-20260523/SECURITY-CONFIG-GUIDE.md
+#
+# 端口映射 / Port Mapping:
+#   5432 → PostgreSQL 15
+#   3721 → API Proxy (Express)
+#   5173 → Frontend (Vite)
+# ════════════════════════════════════════════════════════════════════
+
+services:
+  # ──────────────────────────────────────────────
+  # Container 1: PostgreSQL 15 数据库
+  # ──────────────────────────────────────────────
+  yyc3-postgres:
+    image: postgres:15-alpine
+    container_name: yyc3-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: yyc3_family
+      POSTGRES_USER: yyc3_admin
+      POSTGRES_PASSWORD: "${YYC3_PG_PASSWORD:?Error - YYC3_PG_PASSWORD env var is required. See SECURITY-CONFIG-GUIDE.md}"
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=en_US.utf8 --lc-ctype=en_US.utf8"
+      TZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      # 数据持久化 / Data persistence
+      - yyc3_pgdata:/var/lib/postgresql/data
+      # DDL 自动初始化（首次启动时执行） / Auto-init DDL on first start
+      - ./docs/postgresql-15-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U yyc3_admin -d yyc3_family"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - yyc3-network
+
+  # ──────────────────────────────────────────────
+  # Container 2: API 代理服务 (Express :3721)
+  # ──────────────────────────────────────────────
+  yyc3-proxy:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.txt
+    container_name: yyc3-proxy
+    restart: unless-stopped
+    depends_on:
+      yyc3-postgres:
+        condition: service_healthy
+    environment:
+      YYC3_PORT: 3721
+      YYC3_PG_HOST: yyc3-postgres
+      YYC3_PG_PORT: 5432
+      YYC3_PG_DATABASE: yyc3_family
+      YYC3_PG_USER: yyc3_admin
+      YYC3_PG_PASSWORD: "${YYC3_PG_PASSWORD:?Error - YYC3_PG_PASSWORD env var is required}"
+      YYC3_PG_SSL: disable
+      YYC3_PG_POOL_SIZE: 10
+      YYC3_CORS_ORIGINS: "http://localhost:5173,http://localhost:3000,http://localhost:5174"
+      YYC3_AUTH_TOKEN: ${YYC3_AUTH_TOKEN:-}
+      YYC3_LOG_LEVEL: info
+    ports:
+      - "3721:3721"
+    networks:
+      - yyc3-network
+
+  # ──────────────────────────────────────────────
+  # Container 3: 前端开发服务 (Vite :5173)
+  # ──────────────────────────────────────────────
+  yyc3-frontend:
+    image: node:20-alpine
+    container_name: yyc3-frontend
+    restart: unless-stopped
+    working_dir: /app
+    depends_on:
+      yyc3-proxy:
+        condition: service_healthy
+    volumes:
+      # 挂载项目根目录（排除 node_modules）/ Mount project root (exclude node_modules)
+      - .:/app
+      - /app/node_modules
+      - /app/server/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    environment:
+      NODE_ENV: development
+    networks:
+      - yyc3-network
+
+# ──────────────────────────────────────────────
+# Volumes: 数据卷 / Data Volumes
+# ──────────────────────────────────────────────
+volumes:
+  yyc3_pgdata:
+    driver: local
+    name: yyc3_pgdata
+
+# ──────────────────────────────────────────────
+# Networks: 网络 / Networks
+# ──────────────────────────────────────────────
+networks:
+  yyc3-network:
+    driver: bridge
+    name: yyc3-network
