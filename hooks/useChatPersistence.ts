@@ -12,7 +12,6 @@ export function useChatPersistence(channelId: string, initialChats: Chat[] = [])
 
   const getStorageKey = (id: string) => id === 'main' ? "yyc3_chat_history" : `yyc3_chat_history_${id}`;
 
-  // Load from storage when channelId changes
   useEffect(() => {
     setLoading(true);
     try {
@@ -27,7 +26,6 @@ export function useChatPersistence(channelId: string, initialChats: Chat[] = [])
           return value;
         });
 
-        // Migration: Ensure new fields exist
         const migrated = parsed.map(chat => ({
           ...chat,
           isStarred: chat.isStarred ?? false,
@@ -45,43 +43,36 @@ export function useChatPersistence(channelId: string, initialChats: Chat[] = [])
     }
   }, [channelId]);
 
-  // Save to storage
-  const saveChats = useCallback((newChats: Chat[]) => {
+  const persistToStorage = useCallback((newChats: Chat[]) => {
     try {
       const key = getStorageKey(channelId);
       const serialized = JSON.stringify(newChats);
 
       if (serialized.length > MAX_STORAGE_SIZE) {
-        /* 存储配额超限，自动清理旧记录 / Storage quota exceeded, auto-cleaning old chats */
-        // Simple cleanup strategy: keep starred and recent (<30 days)
         const now = new Date();
         const cutoff = new Date(now.getTime() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000);
-
         const cleaned = newChats.filter(c =>
           c.isStarred || new Date(c.updatedAt) > cutoff
         );
-
         localStorage.setItem(key, JSON.stringify(cleaned));
-        setChats(cleaned);
-      } else {
-        localStorage.setItem(key, serialized);
-        setChats(newChats);
+        return cleaned;
       }
+
+      localStorage.setItem(key, serialized);
+      return newChats;
     } catch {
-      /* 聊天记录保存失败静默处理 / Silent on chat save failure */
+      return newChats;
     }
   }, [channelId]);
 
-  // Wrapper for setting state to ensure persistence
   const setChatsWrapper = useCallback((value: Chat[] | ((val: Chat[]) => Chat[])) => {
     setChats(prev => {
       const newValue = typeof value === 'function' ? value(prev) : value;
-      saveChats(newValue);
-      return newValue;
+      const persisted = persistToStorage(newValue);
+      return persisted;
     });
-  }, [saveChats]);
+  }, [persistToStorage]);
 
-  // Export Data
   const exportData = useCallback(() => {
     const data = {
       channelId,
@@ -99,7 +90,6 @@ export function useChatPersistence(channelId: string, initialChats: Chat[] = [])
     URL.revokeObjectURL(url);
   }, [chats, channelId]);
 
-  // Import Data
   const importData = useCallback((jsonString: string) => {
     try {
       const parsed = JSON.parse(jsonString, (key, value) => {
@@ -115,7 +105,6 @@ export function useChatPersistence(channelId: string, initialChats: Chat[] = [])
       }
       return false;
     } catch {
-      /* 导入失败静默处理 / Silent on import failure */
       return false;
     }
   }, [setChatsWrapper]);
