@@ -93,7 +93,7 @@ const MODEL_HINTS: Record<string, string[]> = {
  * Manages global application settings including:
  * - AI Model Selection (Provider/Model/Params)
  * - Storage Channels (Local/Encrypted)
- * - AI Family/Agents Status
+ * - AI Assistant/Agents Status
  * - MCP Connectivity
  * - Extensions & GitOps
  *
@@ -174,7 +174,7 @@ export function SettingsModal({ isOpen, onClose, defaultTab = 'models', channelM
 
 
 
-  // AI Family State
+  // AI Assistant State
   const [aiFamily, setAiFamily] = useState([
     { id: 1, name: "ARCHITECT_PRIME", version: "v4.2.0", role: "System Architecture & Patterns", status: "active" },
     { id: 2, name: "CODE_WEAVER", version: "v3.1.5", role: "Frontend Implementation Specialist", status: "active" },

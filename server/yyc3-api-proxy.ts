@@ -1,12 +1,12 @@
 /**
- * @file YYC³ AI Family - 本地 API 代理服务器
+ * @file YYC³ AI Assistant - 本地 API 代理服务器
  * @description Express 代理服务，桥接前端浏览器与本地 PostgreSQL 15 数据库
  * @module server/yyc3-api-proxy
  * @version 0.9.4
  * @since Personalize
  * @port 3721
  *
- * YYC³ AI Family - Local API Proxy Server
+ * YYC³ AI Assistant - Local API Proxy Server
  * Express proxy service bridging frontend browser and local PostgreSQL 15 database
  *
  * 架构 / Architecture:
@@ -1021,7 +1021,7 @@ async function startServer(): Promise<void> {
   /** 根路径信息 / Root path info */
   app.get("/", (_req: Request, res: Response) => {
     res.json({
-      service: "YYC³ AI Family - Local API Proxy",
+      service: "YYC³ AI Assistant - Local API Proxy",
       version: "0.9.4",
       codename: "Personalize",
       apiBase: "/api/v1",

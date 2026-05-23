@@ -93,7 +93,7 @@ export function SystemStartup({ onComplete }: { onComplete?: () => void }) {
 
                 <div className="text-center mb-8">
                   <h1 className="text-4xl font-bold tracking-widest text-green-500 mb-2 glitch-text" data-text="YYC³">YYC³</h1>
-                  <div className="text-[10px] uppercase tracking-[0.5em] text-green-500/50">AI Family OS v0.9.3 [Intelligence]</div>
+                  <div className="text-[10px] uppercase tracking-[0.5em] text-green-500/50">AI Assistant OS v0.9.3 [Intelligence]</div>
                 </div>
 
                 <div className="space-y-1.5 h-32 font-mono text-xs md:text-sm">

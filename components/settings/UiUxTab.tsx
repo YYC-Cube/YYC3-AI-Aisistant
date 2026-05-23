@@ -159,7 +159,7 @@ export function UiUxTab({ uiHook, onUiChange }: UiUxTabProps) {
             <Input
               value={uiHook.settings.systemDisplayName}
               onChange={(e) => onUiChange('systemDisplayName', e.target.value)}
-              placeholder="YYC³ AI Family"
+              placeholder="YYC³ AI Assistant"
               maxLength={40}
               className="bg-green-500/5 border-green-500/20 text-green-500 font-mono h-10 rounded-none focus-visible:ring-0 focus-visible:border-green-500/50 text-sm"
             />

@@ -1,6 +1,6 @@
 # ════════════════════════════════════════════════════════════════════
-# YYC³ AI Family - Docker Compose 一键编排
-# YYC³ AI Family - Docker Compose One-Click Orchestration
+# YYC³ AI Assistant - Docker Compose 一键编排
+# YYC³ AI Assistant - Docker Compose One-Click Orchestration
 # ════════════════════════════════════════════════════════════════════
 # Version: 0.9.4 [Personalize] [Security Hardened]
 # Architecture: PostgreSQL 15 + API Proxy + Frontend (3 containers)

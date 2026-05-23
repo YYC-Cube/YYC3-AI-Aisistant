@@ -1,7 +1,7 @@
 {
   "name": "YYC3-AI-Aisistant",
   "version": "0.9.4",
-  "description": "YYC³ AI Family System - Love and Technology",
+  "description": "YYC³ AI Assistant System - Love and Technology",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,7 +1,7 @@
 {
   "name": "yyc3-api-proxy",
   "version": "0.9.4",
-  "description": "YYC³ AI Family - Local API Proxy Server (Browser ↔ PostgreSQL 15)",
+  "description": "YYC³ AI Assistant - Local API Proxy Server (Browser ↔ PostgreSQL 15)",
   "private": true,
   "scripts": {
     "start": "tsx yyc3-api-proxy.ts",

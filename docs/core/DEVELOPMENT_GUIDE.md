@@ -1,6 +1,6 @@
 ---
 file: DEVELOPMENT_GUIDE.md
-description: YYC³ AI Family 开发者完整工作手册 — 环境搭建、开发流程、调试技巧、部署指南
+description: YYC³ AI Assistant 开发者完整工作手册 — 环境搭建、开发流程、调试技巧、部署指南
 author: YanYuCloudCube Team <admin@0379.email>
 version: v1.0.0
 created: 2026-05-23
@@ -12,7 +12,7 @@ category: development
 
 <div align="center">
 
-# YYC³ AI Family 开发指南
+# YYC³ AI Assistant 开发指南
 
 **言启千行代码 | 语枢万物智能**
 

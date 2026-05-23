@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="./public/AI-Assis.png" alt="YYC³ AI Family" width="480" />
+<img src="./public/AI-Assis.png" alt="YYC³ AI Assistant" width="480" />
 
-# YYC³ AI Family
+# YYC³ AI Assistant
 
 **言启千行代码 | 语枢万物智能**
 
@@ -30,11 +30,11 @@
 
 ## 项目概述
 
-YYC³ AI Family 是一款基于 React 19 + TypeScript + Vite 5 的终端风格 AI 对话系统，融合黑客终端 UI 美学与多模型 AI 引擎，提供沉浸式智能对话体验。
+YYC³ AI Assistant 是一款基于 React 19 + TypeScript + Vite 5 的终端风格 AI 对话系统，融合黑客终端 UI 美学与多模型 AI 引擎，提供沉浸式智能对话体验。
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     YYC³ AI Family Architecture                 │
+│                     YYC³ AI Assistant Architecture                 │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │   ┌─────────────┐   ┌──────────────┐   ┌──────────────┐       │

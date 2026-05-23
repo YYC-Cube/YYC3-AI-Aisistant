@@ -1,4 +1,4 @@
-name: YYC3 AI Family CI/CD Pipeline
+name: YYC3 AI Assistant CI/CD Pipeline
 
 on:
   push:

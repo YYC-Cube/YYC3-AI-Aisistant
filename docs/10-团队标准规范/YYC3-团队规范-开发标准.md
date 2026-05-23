@@ -501,7 +501,7 @@ import { useState, useCallback, useMemo, createContext, useContext } from "react
 | **XxxEditor**         | `CodeEditor`, `EnvConfigEditor`           | 编辑器组件     |
 | **XxxMonitor**        | `SecurityMonitor`, `PerformanceMonitor`   | 监控组件       |
 | **XxxTable**          | `DataEditorTables`, `InlineEditableTable` | 表格组件       |
-| **FamilyXxx**         | `FamilyChat`, `FamilyHome`                | AI Family 前缀 |
+| **FamilyXxx**         | `FamilyChat`, `FamilyHome`                | AI Assistant 前缀 |
 
 ### 3.4 Hook 命名模式
 

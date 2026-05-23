@@ -1,6 +1,6 @@
 ---
 file: README.md
-description: YYC³ AI Family 文档体系总索引
+description: YYC³ AI Assistant 文档体系总索引
 author: YanYuCloudCube Team
 version: v3.0.0
 created: 2026-05-23
@@ -18,7 +18,7 @@ category: docs
 
 ---
 
-# YYC³ AI Family 文档体系
+# YYC³ AI Assistant 文档体系
 
 ## 核心理念
 

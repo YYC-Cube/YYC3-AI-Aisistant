@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="./public/AI-Assis.png" alt="YYC³ AI Family" width="480" />
+<img src="./public/AI-Assis.png" alt="YYC³ AI Assistant" width="480" />
 
-# YYC³ AI Family
+# YYC³ AI Assistant
 
 **Words Inspire Thousands of Lines of Code | Language Pivots the Intelligence of All Things**
 
@@ -26,11 +26,11 @@
 
 ## Overview
 
-YYC³ AI Family is a terminal-styled AI conversation system built with React 19 + TypeScript + Vite 5. It blends hacker-terminal UI aesthetics with multi-model AI engines to deliver an immersive intelligent dialogue experience.
+YYC³ AI Assistant is a terminal-styled AI conversation system built with React 19 + TypeScript + Vite 5. It blends hacker-terminal UI aesthetics with multi-model AI engines to deliver an immersive intelligent dialogue experience.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     YYC³ AI Family Architecture                 │
+│                     YYC³ AI Assistant Architecture                 │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │   ┌─────────────┐   ┌──────────────┐   ┌──────────────┐       │

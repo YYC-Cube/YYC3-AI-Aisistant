@@ -12,7 +12,7 @@
  * 本地 PostgreSQL 15 通道架构 / Local PostgreSQL 15 Channel Architecture:
  *
  * ┌─────────────────────────────────────────────────────────────────────┐
- * │                     YYC3 AI Family Frontend                        │
+ * │                     YYC3 AI Assistant Frontend                        │
  * │  ┌──────────┐  ┌──────────────┐  ┌────────────────┐               │
  * │  │ Hooks    │→ │ Service 层   │→ │ Repository 层  │               │
  * │  │ (React)  │  │ (业务逻辑)   │  │ (数据访问)     │               │

@@ -22,7 +22,7 @@ const DEFAULT_SETTINGS: UISettings = {
   fontId: 'vt323',
   animations: true,
   topBarText: 'CODE | AI | FAMILY',
-  systemDisplayName: 'YYC\u00b3 AI Family',
+  systemDisplayName: 'YYC\u00b3 AI Assistant',
   version: CURRENT_VERSION,
 };
 

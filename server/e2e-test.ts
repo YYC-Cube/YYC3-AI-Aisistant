@@ -1,11 +1,11 @@
 /**
- * @file YYC³ AI Family - E2E 端点自动化验证脚本
+ * @file YYC³ AI Assistant - E2E 端点自动化验证脚本
  * @description 自动测试 API 代理的全部 10 个 RESTful 端点
  * @module server/e2e-test
  * @version 0.9.4
  * @since Personalize
  *
- * YYC³ AI Family - E2E Endpoint Automated Verification Script
+ * YYC³ AI Assistant - E2E Endpoint Automated Verification Script
  * Automatically tests all 10 RESTful endpoints of the API proxy
  *
  * 使用方式 / Usage:
@@ -103,7 +103,7 @@ async function runTests(): Promise<void> {
   const line = "═".repeat(72);
 
   process.stdout.write(`\n${line}\n`);
-  process.stdout.write(`  YYC³ AI Family - E2E Endpoint Verification\n`);
+  process.stdout.write(`  YYC³ AI Assistant - E2E Endpoint Verification\n`);
   process.stdout.write(`  Target: ${API_BASE}\n`);
   process.stdout.write(`  Timestamp: ${new Date().toISOString()}\n`);
   process.stdout.write(`${line}\n\n`);
