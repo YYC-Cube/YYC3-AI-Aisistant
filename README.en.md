@@ -8,7 +8,7 @@
 
 *言启千行代码 | 语枢万物智能*
 
-[![Version](https://img.shields.io/badge/version-0.9.4-22c55e?style=flat-square&logo=semantic-release)](https://github.com/YYC-Cube/yyc3-ai-assistant)
+[![Version](https://img.shields.io/badge/version-0.9.4-22c55e?style=flat-square&logo=semantic-release)](https://github.com/YYC-Cube/YYC3-AI-Aisistant)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
@@ -70,8 +70,8 @@ YYC³ AI Family is a terminal-styled AI conversation system built with React 19 
 ### Frontend Development
 
 ```bash
-git clone https://github.com/YYC-Cube/yyc3-ai-assistant.git
-cd yyc3-ai-assistant
+git clone https://github.com/YYC-Cube/YYC3-AI-Aisistant.git
+cd YYC3-AI-Aisistant
 pnpm install
 cp .env.example .env
 pnpm dev
@@ -89,7 +89,7 @@ pnpm dev
 ## Project Structure
 
 ```
-yyc3-ai-assistant/
+YYC3-AI-Aisistant/
 ├── components/          # React components
 │   ├── ui/              # shadcn/ui base components
 │   ├── settings/        # SettingsModal sub-components

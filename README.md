@@ -8,7 +8,7 @@
 
 *Words Inspire Thousands of Lines of Code | Language Pivots the Intelligence of All Things*
 
-[![Version](https://img.shields.io/badge/version-0.9.4-22c55e?style=flat-square&logo=semantic-release)](https://github.com/YYC-Cube/yyc3-ai-assistant)
+[![Version](https://img.shields.io/badge/version-0.9.4-22c55e?style=flat-square&logo=semantic-release)](https://github.com/YYC-Cube/YYC3-AI-Aisistant)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
@@ -75,8 +75,8 @@ YYC³ AI Family 是一款基于 React 19 + TypeScript + Vite 5 的终端风格 A
 
 ```bash
 # 克隆仓库
-git clone https://github.com/YYC-Cube/yyc3-ai-assistant.git
-cd yyc3-ai-assistant
+git clone https://github.com/YYC-Cube/YYC3-AI-Aisistant.git
+cd YYC3-AI-Aisistant
 
 # 安装依赖
 pnpm install
@@ -107,7 +107,7 @@ pnpm dev
 ## 项目结构
 
 ```
-yyc3-ai-assistant/
+YYC3-AI-Aisistant/
 ├── components/          # React 组件
 │   ├── ui/              # shadcn/ui 基础组件
 │   ├── settings/        # SettingsModal 子组件

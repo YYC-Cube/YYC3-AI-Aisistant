@@ -59,8 +59,8 @@ category: development
 ### 1. 克隆与安装
 
 ```bash
-git clone https://github.com/YYC-Cube/yyc3-ai-assistant.git
-cd yyc3-ai-assistant
+git clone https://github.com/YYC-Cube/YYC3-AI-Aisistant.git
+cd YYC3-AI-Aisistant
 pnpm install
 ```
 

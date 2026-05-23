@@ -9,10 +9,10 @@ description: "YYC³ AI Assistant 可复用文档模版配置体系"
 # 全局变量配置
 global_variables:
   brand_name: "YanYuCloudCube"
-  project_name: "YYC3-AI-Assistant"
-  project_codename: "yyc3-ai-family"
+  project_name: "YYC3-AI-Aisistant"
+  project_codename: "YYC3-AI-Aisistant"
   project_version: "0.9.4"
-  project_repo: "https://github.com/YYC-Cube/yyc3-ai-assistant.git"
+  project_repo: "https://github.com/YYC-Cube/YYC3-AI-Aisistant.git"
   brand_slogan_cn: "言启千行代码 | 语枢万物智能"
   brand_slogan_en: "Words Inspire Thousands of Lines of Code | Language Pivots the Intelligence of All Things"
   brand_vision_cn: "万象归元于云枢 | 深栈智启新纪元"

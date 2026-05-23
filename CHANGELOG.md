@@ -102,6 +102,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <div align="center">
 
-**YanYuCloudCube Team** · [GitHub](https://github.com/YYC-Cube/yyc3-ai-assistant) · [admin@0379.email](mailto:admin@0379.email)
+**YanYuCloudCube Team** · [GitHub](https://github.com/YYC-Cube/YYC3-AI-Aisistant) · [admin@0379.email](mailto:admin@0379.email)
 
 </div>
