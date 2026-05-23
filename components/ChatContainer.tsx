@@ -72,9 +72,12 @@ export function ChatContainer({ currentChat, onUpdateChat }: ChatContainerProps)
     }
   };
 
+  const messageCount = currentChat.messages.length;
+  const lastMessageText = currentChat.messages[messageCount - 1]?.text ?? "";
+
   useEffect(() => {
     scrollToBottom();
-  }, [currentChat.messages]);
+  }, [messageCount, lastMessageText]);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
